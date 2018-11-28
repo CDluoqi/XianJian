@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="LoginUiSkin" minHeight="230" minWidth="450" xmlns:e="http://ns.egret.com/eui" xmlns:ns1="*" xmlns:w="http://ns.egret.com/wing" height="800" width="480">
+    <e:Image  scale9Grid="2,2,12,12"  source="xianjian_jpg" fillMode="clip" anchorOffsetY="0" width="480" height="800" verticalCenter="0" horizontalCenter="0"/>
+	<e:Label text="抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。\n适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。" anchorOffsetY="0" anchorOffsetX="0" height="30" textAlign="center" width="430" horizontalCenter="0" verticalAlign="bottom" size="15" bottom="66"/>
+	<ns1:MaskButton label="登陆游戏" x="168" y="614.33" icon="login_json.btn_loginblue" anchorOffsetY="0" height="55.33" skinName="skins.MaskButtonSkin"/>
+	<e:Group width="336" height="51" y="549.33" anchorOffsetY="0" horizontalCenter="0">
+		<e:Image source="login_json.downimg" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0"/>
+		<e:Label text="选择服务器:西南一区" verticalCenter="0" horizontalCenter="0" left="30" right="0" top="0" bottom="0" verticalAlign="middle" size="20" textAlign="center"/>
+		<e:Image id="iconre" source="login_json.re" fillMode="clip" right="0" top="0"/>
+		<e:Image id="iconwei" source="login_json.wei" fillMode="clip" right="-15" top="0"/>
+		<e:Image id="iconxin" source="login_json.xin" fillMode="clip" right="0" top="0"/>
+	</e:Group>
+	<ns1:MaskButton label="" x="355.5" y="44.17" skinName="skins.MaskButtonSkin" icon="login_json.btn_login_Renew" anchorOffsetY="0" height="60" anchorOffsetX="0" width="64"/>
+</e:Skin>

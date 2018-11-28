@@ -1,0 +1,17 @@
+{"file":"login.png","frames":{
+"blanklogin":{"x":477,"y":0,"w":10,"h":10,"offX":0,"offY":0,"sourceW":10,"sourceH":10},
+"btn_loginblue":{"x":0,"y":555,"w":144,"h":165,"offX":0,"offY":0,"sourceW":144,"sourceH":165},
+"btn_login_change":{"x":403,"y":608,"w":64,"h":124,"offX":0,"offY":0,"sourceW":64,"sourceH":124},
+"btn_login_Renew":{"x":403,"y":734,"w":57,"h":120,"offX":2,"offY":0,"sourceW":60,"sourceH":120},
+"downimg":{"x":146,"y":555,"w":336,"h":51,"offX":0,"offY":0,"sourceW":336,"sourceH":51},
+"downimg_1":{"x":0,"y":722,"w":401,"h":51,"offX":0,"offY":0,"sourceW":401,"sourceH":51},
+"login_change":{"x":0,"y":775,"w":118,"h":59,"offX":0,"offY":3,"sourceW":118,"sourceH":62},
+"login_RenewBg":{"x":0,"y":0,"w":475,"h":498,"offX":0,"offY":0,"sourceW":475,"sourceH":498},
+"login_renewItem1":{"x":120,"y":775,"w":180,"h":30,"offX":0,"offY":0,"sourceW":180,"sourceH":30},
+"login_renewItem2":{"x":120,"y":807,"w":198,"h":23,"offX":0,"offY":0,"sourceW":198,"sourceH":23},
+"login_renewItem3":{"x":146,"y":608,"w":193,"h":57,"offX":0,"offY":0,"sourceW":193,"sourceH":57},
+"login_start":{"x":146,"y":667,"w":183,"h":50,"offX":0,"offY":0,"sourceW":183,"sourceH":50},
+"lTipsBg":{"x":0,"y":500,"w":476,"h":53,"offX":0,"offY":0,"sourceW":476,"sourceH":53},
+"re":{"x":341,"y":640,"w":40,"h":30,"offX":1,"offY":0,"sourceW":41,"sourceH":30},
+"wei":{"x":341,"y":608,"w":56,"h":30,"offX":0,"offY":0,"sourceW":56,"sourceH":30},
+"xin":{"x":469,"y":608,"w":41,"h":30,"offX":0,"offY":0,"sourceW":41,"sourceH":30}}}

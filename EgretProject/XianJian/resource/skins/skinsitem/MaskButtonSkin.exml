@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<e:Skin class="skins.MaskButtonSkin" states="up,down,disabled" minHeight="50" minWidth="100" currentState="up" xmlns:e="http://ns.egret.com/eui" height="69">
+	<e:Image id="iconDisplay" horizontalCenter="0" y="35" top.up="0" bottom.down="0" fillMode="clip"/>
+    <e:Label id="labelDisplay" top="0" bottom="0" left="0" right="0"
+             size="20"
+             textColor="0xFFFFFF" verticalAlign="middle" textAlign="center" horizontalCenter="0" verticalCenter="0" textColor.down="0x3f3e3e"/>
+</e:Skin>
