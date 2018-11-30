@@ -15,6 +15,9 @@
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ThemeAdapter.js",
+		"bin-debug/Entity/Player.js",
+		"bin-debug/GameLogic/Scene.js",
+		"bin-debug/GameLogic/TiledMap.js",
 		"bin-debug/UI/LoginUI.js",
 		"bin-debug/UI/UIItems/MaskButton.js"
 	]
