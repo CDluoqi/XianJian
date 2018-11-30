@@ -36,14 +36,14 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-var LoadingUI = (function (_super) {
-    __extends(LoadingUI, _super);
-    function LoadingUI() {
+var LoadingUI2 = (function (_super) {
+    __extends(LoadingUI2, _super);
+    function LoadingUI2() {
         var _this = _super.call(this) || this;
         _this.createView();
         return _this;
     }
-    LoadingUI.prototype.createView = function () {
+    LoadingUI2.prototype.createView = function () {
         this.textField = new egret.TextField();
         this.addChild(this.textField);
         this.textField.y = 300;
@@ -51,10 +51,10 @@ var LoadingUI = (function (_super) {
         this.textField.height = 100;
         this.textField.textAlign = "center";
     };
-    LoadingUI.prototype.onProgress = function (current, total) {
+    LoadingUI2.prototype.onProgress = function (current, total) {
         this.textField.text = "Loading..." + current + "/" + total;
     };
-    return LoadingUI;
+    return LoadingUI2;
 }(egret.Sprite));
-__reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
+__reflect(LoadingUI2.prototype, "LoadingUI2", ["RES.PromiseTaskReporter"]);
 //# sourceMappingURL=LoadingUI.js.map

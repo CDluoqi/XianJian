@@ -79,7 +79,6 @@ var Main = (function (_super) {
     Main.prototype.createChildren = function () {
         _super.prototype.createChildren.call(this);
         egret.lifecycle.addLifecycleListener(function (context) {
-            // custom lifecycle plugin
         });
         egret.lifecycle.onPause = function () {
             egret.ticker.pause();
@@ -87,8 +86,6 @@ var Main = (function (_super) {
         egret.lifecycle.onResume = function () {
             egret.ticker.resume();
         };
-        //inject the custom material parser
-        //注入自定义的素材解析器
         var assetAdapter = new AssetAdapter();
         egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
         egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
@@ -111,23 +108,20 @@ var Main = (function (_super) {
     };
     Main.prototype.loadResource = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var loadingView, e_1;
+            var e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 4, , 5]);
-                        loadingView = new LoadingUI();
-                        this.stage.addChild(loadingView);
                         return [4 /*yield*/, RES.loadConfig("resource/default.res.json", "resource/")];
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, this.loadTheme()];
                     case 2:
                         _a.sent();
-                        return [4 /*yield*/, RES.loadGroup("preload", 0, loadingView)];
+                        return [4 /*yield*/, RES.loadGroup("preload", 0)];
                     case 3:
                         _a.sent();
-                        this.stage.removeChild(loadingView);
                         return [3 /*break*/, 5];
                     case 4:
                         e_1 = _a.sent();
@@ -152,8 +146,50 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.createGameScene = function () {
-        var loginUI = new LoginUI();
-        this.addChild(loginUI);
+        this.loginUI = new LoginUI();
+        this.loginUI.SetLoginListener(this.OnLogin, this);
+        this.stage.addChild(this.loginUI);
+    };
+    Main.prototype.OnLogin = function () {
+        console.log("登录");
+        this.stage.removeChild(this.loginUI);
+        this.loadMainRes().catch(function (e) {
+            console.log(e);
+        });
+    };
+    Main.prototype.loadMainRes = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var loadingUI, e_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        loadingUI = new LoadingUI();
+                        this.stage.addChild(loadingUI);
+                        return [4 /*yield*/, RES.loadGroup("main", 0, loadingUI)];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, RES.loadGroup("player", 0, loadingUI)];
+                    case 2:
+                        _a.sent();
+                        this.stage.removeChild(loadingUI);
+                        this.StartGame();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        e_2 = _a.sent();
+                        console.error(e_2);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Main.prototype.StartGame = function () {
+        var scene = new Scene();
+        this.stage.addChild(scene);
+        var mainUI = new MainUI();
+        mainUI.skinName = new MainUISkin();
+        this.stage.addChild(mainUI);
     };
     return Main;
 }(eui.UILayer));

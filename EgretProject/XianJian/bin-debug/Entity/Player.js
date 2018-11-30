@@ -76,6 +76,19 @@ var Player = (function (_super) {
         clip.frameRate = 10;
         return clip;
     };
+    Player.prototype.MoveByPath = function (_path) {
+        this.pathIndex = 0;
+        this.path = _path;
+        this.MovePathIndex();
+    };
+    Player.prototype.MovePathIndex = function () {
+        if (this.path.length > this.pathIndex) {
+            this.GotoPosition(this.path[this.pathIndex]);
+            this.pathIndex += 1;
+            return true;
+        }
+        return false;
+    };
     Player.prototype.GotoPosition = function (positionTarget) {
         var postion = new egret.Point(this.x, this.y);
         if (this._state == Global.Player_State.Idle || this._state == Global.Player_State.Run) {
@@ -87,8 +100,8 @@ var Player = (function (_super) {
             var time = egret.Point.distance(positionTarget, new egret.Point(this.x, this.y)) / speed;
             this.moveTween.to({ "x": positionTarget.x, "y": positionTarget.y }, time);
             this.moveTween.call(this.moveEnd, this);
-            if (positionTarget.x < this.x) {
-                if (positionTarget.y > this.y) {
+            if (positionTarget.x <= this.x) {
+                if (positionTarget.y >= this.y) {
                     this.direction = Global.Direction.Down_Left;
                 }
                 else {
@@ -96,7 +109,7 @@ var Player = (function (_super) {
                 }
             }
             else {
-                if (positionTarget.y > this.y) {
+                if (positionTarget.y >= this.y) {
                     this.direction = Global.Direction.Down_Right;
                 }
                 else {
@@ -108,7 +121,9 @@ var Player = (function (_super) {
     };
     Player.prototype.moveEnd = function () {
         this.moveTween = null;
-        this.state = Global.Player_State.Idle;
+        if (!this.MovePathIndex()) {
+            this.state = Global.Player_State.Idle;
+        }
     };
     Object.defineProperty(Player.prototype, "direction", {
         get: function () {

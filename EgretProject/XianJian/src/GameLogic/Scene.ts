@@ -3,11 +3,11 @@ class Scene extends eui.Group
     private content:eui.Group = null;
     private player:Player = null;
     private pointer:egret.MovieClip = null;
+    private tiledMap:TiledMap = null;
 
     public constructor() 
     {
         super();
-        
     }
 
     protected createChildren()
@@ -45,6 +45,13 @@ class Scene extends eui.Group
 
         this.player = new Player();
         this.content.addChild(this.player);
+        this.tiledMap = new TiledMap();
+        this.tiledMap.Init();
+        let startPoint = this.tiledMap.GetStartPoint();
+        this.player.x = startPoint.x;
+        this.player.y = startPoint.y;
+        console.log(startPoint.y + "  " + startPoint.x);
+        
 
         this.addEventListener(egret.Event.ENTER_FRAME, this.update, this);
     }
@@ -72,12 +79,18 @@ class Scene extends eui.Group
 
         let targetX = touchX - this.content.x;
         let targetY =  touchY - this.content.y;
-        this.pointer.visible = true;
-        this.pointer.x = targetX;
-        this.pointer.y = targetY;
-        this.pointer.play(-1);
+
         
-        this.player.GotoPosition(new egret.Point(targetX, targetY));
+        let path = this.tiledMap.FindPath(new egret.Point(this.player.x, this.player.y), new egret.Point(targetX, targetY));
+        if(path != null)
+        {
+            this.pointer.visible = true;
+            this.pointer.x = targetX;
+            this.pointer.y = targetY;
+            this.pointer.play(-1);
+            this.player.MoveByPath(path);
+        }
+        
     }
 
     private moveEnd():void 

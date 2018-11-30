@@ -29,12 +29,12 @@
 
 class Main extends eui.UILayer {
 
+    private loginUI:LoginUI;
 
     protected createChildren(): void {
         super.createChildren();
 
         egret.lifecycle.addLifecycleListener((context) => {
-            // custom lifecycle plugin
         })
 
         egret.lifecycle.onPause = () => {
@@ -45,8 +45,6 @@ class Main extends eui.UILayer {
             egret.ticker.resume();
         }
 
-        //inject the custom material parser
-        //注入自定义的素材解析器
         let assetAdapter = new AssetAdapter();
         egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
         egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
@@ -57,19 +55,19 @@ class Main extends eui.UILayer {
         })
     }
 
-    private async runGame() {
+    private async runGame() 
+    {
         await this.loadResource()
         this.createGameScene();
     }
 
-    private async loadResource() {
-        try {
-            const loadingView = new LoadingUI();
-            this.stage.addChild(loadingView);
+    private async loadResource() 
+    {
+        try 
+        {
             await RES.loadConfig("resource/default.res.json", "resource/");
             await this.loadTheme();
-            await RES.loadGroup("preload", 0, loadingView);
-            this.stage.removeChild(loadingView);
+            await RES.loadGroup("preload", 0);
         }
         catch (e) {
             console.error(e);
@@ -82,18 +80,50 @@ class Main extends eui.UILayer {
             theme.addEventListener(eui.UIEvent.COMPLETE, () => {
                 resolve();
             }, this);
-
         })
     }
-
-    private textfield: egret.TextField;
     /**
      * 创建场景界面
      * Create scene interface
      */
     protected createGameScene(): void {
-        let loginUI = new LoginUI();
-        this.addChild(loginUI);
+        this.loginUI = new LoginUI();
+        this.loginUI.SetLoginListener(this.OnLogin, this);
+        this.stage.addChild(this.loginUI);
+    }
+
+    private OnLogin(): void
+    {
+        console.log("登录");       
+        this.stage.removeChild(this.loginUI); 
+        this.loadMainRes().catch(e => {
+            console.log(e);
+        })
+    }
+
+    private async loadMainRes()
+    {
+        try 
+        {
+            const loadingUI = new LoadingUI();
+            this.stage.addChild(loadingUI);
+            await RES.loadGroup("main", 0, loadingUI);
+            await RES.loadGroup("player", 0, loadingUI);
+            this.stage.removeChild(loadingUI);
+            this.StartGame();
+        }
+        catch (e) {
+            console.error(e);
+        }
+    }
+
+    private StartGame(): void
+    {
+        let scene = new Scene();
+        this.stage.addChild(scene);
+        let mainUI = new MainUI();
+        mainUI.skinName = new MainUISkin();
+        this.stage.addChild(mainUI);
     }
 
 }

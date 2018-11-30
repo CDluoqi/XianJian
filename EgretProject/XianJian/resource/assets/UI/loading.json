@@ -1,0 +1,11 @@
+{"file":"loading.png","frames":{
+"cent80":{"x":936,"y":0,"w":7,"h":20,"offX":0,"offY":0,"sourceW":7,"sourceH":20},
+"lixiaoyao":{"x":866,"y":0,"w":68,"h":85,"offX":0,"offY":0,"sourceW":68,"sourceH":85},
+"load_img1":{"x":407,"y":135,"w":163,"h":25,"offX":0,"offY":0,"sourceW":163,"sourceH":25},
+"load_img2":{"x":789,"y":101,"w":185,"h":35,"offX":0,"offY":0,"sourceW":185,"sourceH":35},
+"pro":{"x":374,"y":101,"w":413,"h":17,"offX":0,"offY":0,"sourceW":413,"sourceH":17},
+"probar":{"x":0,"y":135,"w":405,"h":11,"offX":0,"offY":0,"sourceW":405,"sourceH":11},
+"proBg":{"x":0,"y":101,"w":372,"h":22,"offX":0,"offY":0,"sourceW":372,"sourceH":22},
+"rate3":{"x":0,"y":0,"w":864,"h":99,"offX":0,"offY":0,"sourceW":864,"sourceH":99},
+"second_loadingbar":{"x":0,"y":148,"w":405,"h":7,"offX":0,"offY":0,"sourceW":405,"sourceH":7},
+"second_loading_bg":{"x":374,"y":120,"w":413,"h":13,"offX":0,"offY":0,"sourceW":413,"sourceH":13}}}

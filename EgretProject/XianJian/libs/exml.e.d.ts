@@ -54,5 +54,9 @@ declare module skins{
 	class MaskButtonSkin extends eui.Skin{
 	}
 }
-declare class LoginUiSkin extends eui.Skin{
+declare class LoadingUISkin extends eui.Skin{
+}
+declare class LoginUISkin extends eui.Skin{
+}
+declare class MainUISkin extends eui.Skin{
 }

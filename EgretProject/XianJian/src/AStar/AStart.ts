@@ -1,4 +1,3 @@
-'use strict';
 class Astar 
 {       
         private static _instance: Astar;
@@ -43,7 +42,7 @@ class Astar
         
         public tileMap: Array<Array<Number>>;
         
-        public findPath(startPos: egret.Point,endPos: egret.Point,tileMap: Array<Array<Number>>) 
+        public findPath(startPos: egret.Point,endPos: egret.Point,tileMap: Array<Array<Number>>) :Array<egret.Point> 
         {            
             this.tileMap = tileMap;//地图
             

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MainUISkin" width="480" height="800" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:tween="egret.tween.*" >
+	<w:Declarations>
+		<tween:TweenGroup id="fire">
+			<tween:TweenItem target="{image}">
+				<tween:Wait duration="250"/>
+				<tween:Set>
+					<tween:props>
+						<e:Object y="{-30}"/>
+					</tween:props>
+				</tween:Set>
+				<tween:Wait duration="250"/>
+				<tween:Set>
+					<tween:props>
+						<e:Object y="{-60}"/>
+					</tween:props>
+				</tween:Set>
+				<tween:Wait duration="250"/>
+				<tween:Set>
+					<tween:props>
+						<e:Object y="{-90}"/>
+					</tween:props>
+				</tween:Set>
+				<tween:Wait duration="250"/>
+				<tween:Set>
+					<tween:props>
+						<e:Object y="{-120}"/>
+					</tween:props>
+				</tween:Set>
+				<tween:Wait duration="250"/>
+				<tween:Set>
+					<tween:props>
+						<e:Object y="{-150}"/>
+					</tween:props>
+				</tween:Set>
+				<tween:Wait duration="250"/>
+				<tween:Set>
+					<tween:props>
+						<e:Object y="{-180}"/>
+					</tween:props>
+				</tween:Set>
+				<tween:Wait duration="250"/>
+				<tween:Set>
+					<tween:props>
+						<e:Object y="{-210}"/>
+					</tween:props>
+				</tween:Set>
+			</tween:TweenItem>
+		</tween:TweenGroup>
+	</w:Declarations>
+	<e:Image source="mainMenu_json.smallMapBg" x="298" y="86"/>
+	<e:Image source="mainMenu_json.smallMap" x="388" y="83"/>
+	<e:Image source="mainMenu_json.smallMapFont" x="391" y="124"/>
+	<e:Group width="273" height="86" y="45" left="0">
+		<e:Image source="mainMenu_json.headBg2" fillMode="clip" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0"/>
+		<e:Group width="220" height="24" x="52.5" y="5" anchorOffsetY="0">
+			<e:Image id="image" source="mainMenu_json.ZhanDouLiHuoGuang" y="0" scaleX="1" scaleY="1" fillMode="clip" x="0"/>
+		</e:Group>
+	</e:Group>
+</e:Skin>

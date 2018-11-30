@@ -94,8 +94,28 @@ class Player extends eui.Group
         clip.frameRate = 10;
         return clip;
     }
+    private pathIndex:number;
+    private path:Array<egret.Point>;
 
-    public GotoPosition(positionTarget:egret.Point):void
+    public MoveByPath(_path: Array<egret.Point>):void
+    {
+        this.pathIndex = 0;
+        this.path = _path;
+        this.MovePathIndex();
+    }
+
+    private MovePathIndex():boolean
+    {
+        if(this.path.length > this.pathIndex)
+        {
+            this.GotoPosition(this.path[this.pathIndex]);
+            this.pathIndex += 1;
+            return true;
+        }
+        return false;       
+    }
+
+    private GotoPosition(positionTarget:egret.Point):void
     {
         let postion = new egret.Point(this.x, this.y);
         if(this._state == Global.Player_State.Idle || this._state == Global.Player_State.Run)
@@ -109,9 +129,9 @@ class Player extends eui.Group
             let time = egret.Point.distance(positionTarget, new egret.Point(this.x, this.y)) / speed;
             this.moveTween.to({ "x": positionTarget.x, "y":positionTarget.y }, time);
             this.moveTween.call(this.moveEnd, this);
-            if(positionTarget.x < this.x)
+            if(positionTarget.x <= this.x)
             {
-                if(positionTarget.y > this.y)
+                if(positionTarget.y >= this.y)
                 {
                     this.direction = Global.Direction.Down_Left;
                 }
@@ -122,7 +142,7 @@ class Player extends eui.Group
             }
             else
             {
-                if(positionTarget.y > this.y)
+                if(positionTarget.y >= this.y)
                 {
                     this.direction = Global.Direction.Down_Right;
                 }
@@ -138,7 +158,10 @@ class Player extends eui.Group
     private moveEnd():void 
     {
         this.moveTween = null;
-        this.state = Global.Player_State.Idle;
+        if(!this.MovePathIndex())
+        {
+            this.state = Global.Player_State.Idle;
+        }        
     }
 
     get direction(): Global.Direction

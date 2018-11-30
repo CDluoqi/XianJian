@@ -15,6 +15,7 @@ var Scene = (function (_super) {
         _this.content = null;
         _this.player = null;
         _this.pointer = null;
+        _this.tiledMap = null;
         return _this;
     }
     Scene.prototype.createChildren = function () {
@@ -47,6 +48,12 @@ var Scene = (function (_super) {
         this.pointer.visible = false;
         this.player = new Player();
         this.content.addChild(this.player);
+        this.tiledMap = new TiledMap();
+        this.tiledMap.Init();
+        var startPoint = this.tiledMap.GetStartPoint();
+        this.player.x = startPoint.x;
+        this.player.y = startPoint.y;
+        console.log(startPoint.y + "  " + startPoint.x);
         this.addEventListener(egret.Event.ENTER_FRAME, this.update, this);
     };
     Scene.prototype.ToMapPos = function (posx, posy) {
@@ -66,11 +73,14 @@ var Scene = (function (_super) {
         var touchY = e.stageY;
         var targetX = touchX - this.content.x;
         var targetY = touchY - this.content.y;
-        this.pointer.visible = true;
-        this.pointer.x = targetX;
-        this.pointer.y = targetY;
-        this.pointer.play(-1);
-        this.player.GotoPosition(new egret.Point(targetX, targetY));
+        var path = this.tiledMap.FindPath(new egret.Point(this.player.x, this.player.y), new egret.Point(targetX, targetY));
+        if (path != null) {
+            this.pointer.visible = true;
+            this.pointer.x = targetX;
+            this.pointer.y = targetY;
+            this.pointer.play(-1);
+            this.player.MoveByPath(path);
+        }
     };
     Scene.prototype.moveEnd = function () {
         this.pointer.stop();
