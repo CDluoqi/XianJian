@@ -88,6 +88,7 @@ class Main extends eui.UILayer {
      */
     protected createGameScene(): void {
         this.loginUI = new LoginUI();
+        this.loginUI.skinName = new LoginUISkin();
         this.loginUI.SetLoginListener(this.OnLogin, this);
         this.stage.addChild(this.loginUI);
     }

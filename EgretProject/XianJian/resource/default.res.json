@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,description_json,login_json,mainMenu_json,UI005_json,UI005_png,xianjian_jpg,loading_json,1_jpg,index_jpg,path_txt",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,description_json,login_json,mainMenu_json,UI005_json,UI005_png,xianjian_jpg,loading_json,1_jpg,index_jpg,path_txt,mainTop_json",
 			"name": "preload"
 		},
 		{
@@ -701,6 +701,12 @@
 			"name": "path_txt",
 			"type": "text",
 			"url": "assets/Map/001/path.txt"
+		},
+		{
+			"name": "mainTop_json",
+			"type": "sheet",
+			"url": "assets/UI/mainTop.json",
+			"subkeys": "bloc_bao,bloc_baoget,bloc_dian,btn_ChengZhang,btn_forge,btn_mainMenuPlus,btn_partner,btn_role,btn_shop,btn_TanSuo,expBarEff,expProgressBar,expProgressBg,mainMenuDengJiBg,mainmenu_ic_notice,mainTopYuanBao,mainTopYuanBao2,noticebg,numberLine_exp,numberLine_mainMenuLevel,smTips,topBg,XieGang,YuanBaoBg"
 		}
 	]
 }

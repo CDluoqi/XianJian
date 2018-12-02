@@ -13,6 +13,7 @@
 		"eui.VScrollBar": "resource/eui_skins/VScrollBarSkin.exml",
 		"eui.VSlider": "resource/eui_skins/VSliderSkin.exml",
 		"eui.ItemRenderer": "resource/eui_skins/ItemRendererSkin.exml",
+		"MaskButton": "resource/skins/skinsitem/MaskButtonSkin.exml",
 		"LoginUI": "resource/skins/uiskins/LoginUISkin.exml",
 		"LoadingUI": "resource/skins/uiskins/LoadingUISkin.exml"
 	},
@@ -33,7 +34,7 @@
 		"resource/eui_skins/VSliderSkin.exml",
 		"resource/skins/skinsitem/MaskButtonSkin.exml",
 		"resource/skins/uiskins/LoadingUISkin.exml",
-		"resource/skins/uiskins/LoginUISkin.exml",
+		"resource/skins/uiskins/LoginUiSkin.exml",
 		"resource/skins/uiskins/MainUISkin.exml"
 	],
 	"path": "resource/default.thm.json"

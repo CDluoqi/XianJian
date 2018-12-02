@@ -147,6 +147,7 @@ var Main = (function (_super) {
      */
     Main.prototype.createGameScene = function () {
         this.loginUI = new LoginUI();
+        this.loginUI.skinName = new LoginUISkin();
         this.loginUI.SetLoginListener(this.OnLogin, this);
         this.stage.addChild(this.loginUI);
     };
