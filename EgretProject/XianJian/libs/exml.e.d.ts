@@ -51,6 +51,10 @@ declare module skins{
 	}
 }
 declare module skins{
+	class EXPProgressBarSkin extends eui.Skin{
+	}
+}
+declare module skins{
 	class MaskButtonSkin extends eui.Skin{
 	}
 }

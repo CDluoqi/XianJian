@@ -20,7 +20,10 @@ class Player extends eui.Group
 {
     private moviClips:{ [direction: string]: Array<egret.MovieClip>; } = {};
 
+    private weaponClips:{ [direction: string]: Array<egret.MovieClip>; } = {};
+
     private curClip:egret.MovieClip = null;
+    private curWeaponClips:egret.MovieClip = null;
 
     private moveTween:egret.Tween = null;
     
@@ -45,38 +48,67 @@ class Player extends eui.Group
         let esMovieClip: Array<egret.MovieClip> = new Array<egret.MovieClip>();
         let neMovieClip: Array<egret.MovieClip> = new Array<egret.MovieClip>();
 
+        let esWeaponMovieClip: Array<egret.MovieClip> = new Array<egret.MovieClip>();
+        let neWeaponMovieClip: Array<egret.MovieClip> = new Array<egret.MovieClip>();
+
         let idle_es = this.createMovieClip("idle", this.direction_up);
         let idle_ne = this.createMovieClip("idle", this.direction_down);
+        let weapon_idle_es = this.createFileClip("idle", this.direction_up);
+        let weapon_idle_ne = this.createFileClip("idle", this.direction_down);
 
         this.addChild(idle_es);
         this.addChild(idle_ne);
+        this.addChild(weapon_idle_es);
+        this.addChild(weapon_idle_ne);
 
         idle_es.visible = false;
-        idle_es.frameRate = 10;
         idle_ne.visible = false;
+        weapon_idle_es.visible = false;
+        weapon_idle_ne.visible = false;
+
+        idle_es.frameRate = 10;        
         idle_ne.frameRate = 10;
+        weapon_idle_es.frameRate = 10;
+        weapon_idle_ne.frameRate = 10;
 
         esMovieClip[Global.Player_State.Idle] = idle_es;
         neMovieClip[Global.Player_State.Idle] = idle_ne;
+        esWeaponMovieClip[Global.Player_State.Idle] = weapon_idle_es;
+        neWeaponMovieClip[Global.Player_State.Idle] = weapon_idle_ne;
 
         let run_es = this.createMovieClip("run", this.direction_up);
         let run_ne = this.createMovieClip("run", this.direction_down);
-
+        let weapon_run_es = this.createFileClip("run", this.direction_up);
+        let weapon_run_ne = this.createFileClip("run", this.direction_down);
+        
+        
         this.addChild(run_es);
         this.addChild(run_ne);
+        this.addChild(weapon_run_es);
+        this.addChild(weapon_run_ne);
 
         run_es.visible = false;
         run_ne.visible = false;
+        weapon_run_es.visible = false;
+        weapon_run_ne.visible = false;
         run_es.frameRate = 10;
         run_ne.frameRate = 10;
+        weapon_run_es.frameRate = 10;
+        weapon_run_ne.frameRate = 10;
         
         esMovieClip[Global.Player_State.Run] = run_es;
         neMovieClip[Global.Player_State.Run] = run_ne;
+        esWeaponMovieClip[Global.Player_State.Run] = weapon_run_es;
+        neWeaponMovieClip[Global.Player_State.Run] = weapon_run_ne;
 
         this.moviClips[this.direction_up] = esMovieClip;
         this.moviClips[this.direction_down] = neMovieClip;
 
+        this.weaponClips[this.direction_up] = esWeaponMovieClip;
+        this.weaponClips[this.direction_down] = neWeaponMovieClip;
+
         this.curClip = idle_es;
+        this.curWeaponClips = weapon_idle_es;
 
         this.updateDirectionAndState();
 
@@ -94,6 +126,20 @@ class Player extends eui.Group
         clip.frameRate = 10;
         return clip;
     }
+
+    private createFileClip(type:string, direction:string):egret.MovieClip
+    {
+        var txtr = RES.getRes("B301_M_" + type + "_" + direction + "_png");
+        var data = RES.getRes("B301_M_" + type + "_" + direction + "_json");
+
+        var factory = new egret.MovieClipDataFactory(data, txtr);
+        var clip = new egret.MovieClip(factory.generateMovieClipData("B301_M_" + type + "_" + direction));
+        clip.anchorOffsetX = 0.5;
+        clip.anchorOffsetY = 0.5;
+        clip.frameRate = 10;
+        return clip;
+    }
+
     private pathIndex:number;
     private path:Array<egret.Point>;
 
@@ -196,23 +242,33 @@ class Player extends eui.Group
     {
         this.curClip.stop();
         this.curClip.visible = false;
+
+        this.curWeaponClips.stop();
+        this.curWeaponClips.visible = false;
+
         if(this.direction == Global.Direction.Down_Left || this.direction == Global.Direction.Down_Right)
         {
             this.curClip = this.moviClips[this.direction_down][this._state];
+            this.curWeaponClips = this.weaponClips[this.direction_down][this._state];
         }
         else
         {
             this.curClip = this.moviClips[this.direction_up][this._state];
+            this.curWeaponClips = this.weaponClips[this.direction_up][this._state];
         }
         if(this.direction == Global.Direction.Down_Left || this.direction == Global.Direction.Up_Left)
         {
             this.curClip.scaleX = -1;
+            this.curWeaponClips.scaleX = -1;
         }
         else
         {
             this.curClip.scaleX = 1;
+            this.curWeaponClips.scaleX = 1;
         }
         this.curClip.visible = true;
+        this.curWeaponClips.visible = true;
         this.curClip.play(-1);
+        this.curWeaponClips.play(-1);
     }
 }

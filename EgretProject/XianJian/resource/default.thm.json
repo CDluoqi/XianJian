@@ -32,9 +32,10 @@
 		"resource/eui_skins/ToggleSwitchSkin.exml",
 		"resource/eui_skins/VScrollBarSkin.exml",
 		"resource/eui_skins/VSliderSkin.exml",
+		"resource/skins/skinsitem/EXPProgressBarSkin.exml",
 		"resource/skins/skinsitem/MaskButtonSkin.exml",
 		"resource/skins/uiskins/LoadingUISkin.exml",
-		"resource/skins/uiskins/LoginUiSkin.exml",
+		"resource/skins/uiskins/LoginUISkin.exml",
 		"resource/skins/uiskins/MainUISkin.exml"
 	],
 	"path": "resource/default.thm.json"

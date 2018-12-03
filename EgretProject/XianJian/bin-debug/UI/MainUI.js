@@ -14,6 +14,8 @@ var MainUI = (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.fire = null;
         _this.image = null;
+        _this.head = null;
+        _this.imagehead = null;
         return _this;
     }
     MainUI.prototype.childrenCreated = function () {
@@ -21,6 +23,9 @@ var MainUI = (function (_super) {
         this.fire.items[0].props = { loop: true };
         this.fire.play();
         this.image.parent.mask = new egret.Rectangle(0, 0, this.image.parent.width, this.image.parent.height);
+        this.head.items[0].props = { loop: true };
+        this.head.play();
+        this.imagehead.parent.mask = new egret.Rectangle(0, 0, this.imagehead.parent.width, this.imagehead.parent.height);
     };
     return MainUI;
 }(BaseUI));
